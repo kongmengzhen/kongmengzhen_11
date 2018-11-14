@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue练习</title>
+    <script src="js/vue.js"></script>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin:0;
+        }
+        .box{
+            text-align: center;
+        }
+        .box>span{
+            color: red;
+            font-size: 18px;
+        }
+       
+        .table-content{
+            margin:100px auto;
+        }
+        .table-content span{
+            background: #ff9900;
+            padding: 0 6px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">   
+    <table border="1px" class="table-content">
+        <tr>           
+            <th>&nbsp;&nbsp; id &nbsp;&nbsp;
+                    <button @click="sort()">排序</button>
+               
+            </th>
+            <th>&nbsp;&nbsp; username &nbsp;&nbsp;   
+                    <button>排序</button>        
+            </th>
+        </tr>
+        <tr v-for='(item, key) in List'>          
+            <td>{{item.id}}</td>
+            <td>{{item.username}}</td>
+        </tr>
+       
+      
+    </table>   
+ </div>
+</body>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#box',
+        data:{
+            List:[
+                {id:1,username:"zhangsan1"},
+                {id:2,username:"zhangsan2"},
+                {id:3,username:"zhangsan3"},
+                {id:4,username:"zhangsan5"},               
+            ]           
+        }, 
+       
+  computed: {
+    sort: function() {
+      return this.List.sort((a,b)=>a.percent-b.percent);//升序
+    }
+  }
+})
+
+</script>
+</html>
